@@ -70,11 +70,11 @@ This app is deployed with Argo CD and is made of :
 * A secret 
 * A service to stockdb-postgresql
 
+At this stage we need a number of screen shots to highlight the adding of your application to ArgoCD
+
 https://github.com/MichaelCade/stock-demo.git 
 
-## Deploy PostgreSQL via Helm within ArgoCD 
-
-
+There is an option also to use the ArgoCD CLI to create (TBD)
 
 ## Implement change that affects our stock database (PostgreSQL) 
 

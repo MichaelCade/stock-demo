@@ -16,4 +16,4 @@ spec:
   selector:
     app: stock-demo
   sessionAffinity: None
-  type: LoadBalancer
+  type: ClusterIP
