@@ -10,11 +10,13 @@ kind: ConfigMap
 metadata:
   creationTimestamp: null
   name: stock-demo-configmap
+  namespace: "stock-demo"
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: stock-demo-deploy
+  namespace: "stock-demo"
   labels:
     app: stock-demo
 spec:

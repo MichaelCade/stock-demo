@@ -5,6 +5,7 @@ metadata:
     app: stock-demo
     service: gateway
   name: stock-demo-svc
+  namespace: "stock-demo"
 spec:
   externalTrafficPolicy: Cluster
   ports:
