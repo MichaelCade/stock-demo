@@ -1,4 +1,8 @@
-# Stock app ArgoCD demo
+# Stock-Demo app ArgoCD demo
+
+<p align="center">
+<img src="/media/qr.png" width=400 height=400>
+</p>
 
 Original app created and forked from - https://github.com/tdewin/stock-demo 
 
@@ -159,7 +163,9 @@ We can use Kasten K10 to get our data back from when this issue took place.
 
 ## Resolving the code
 
-After the recovery we will need to fix our `new-stock-job.yaml` so that we do not alter wrongly the stock value of some products. 
+After the recovery we will need to remove our `new-stock-job.yaml` so that we do not alter wrongly the stock value of some products. 
+
+`rm -r new-stock-job.yaml`
 
 ```
 cat << EOF > correct-stock-job.yaml
