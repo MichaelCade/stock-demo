@@ -1,0 +1,45 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: new-stock-job
+  annotations: 
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  template:
+    metadata:
+      creationTimestamp: null
+    spec:
+      containers:
+      - command: 
+        - /bin/bash
+        - -c
+        - |
+          #!/bin/bash
+          PGPASSWORD=notsecure psql -h stockdb-postgresql -p 5432 -d stock -U root <<EOF
+          select * from stock;
+          INSERT INTO stock(product,unit,amount,price) VALUES ('Veeam Backup for Salesforce','User',10000.0,10000.0);
+          EOF
+          # Oh no !!  :(
+          PGPASSWORD=notsecure psql -h stockdb-postgresql -p 5432 -d stock -U root <<EOF
+          UPDATE stock SET(product,unit,amount,price) = ('Veeam VBR Socket','Socket',1000.0,0);
+          EOF
+        env:
+            - name: POSTGRES_DB
+              value: stock
+            - name: POSTGRES_SERVER
+              value: stockdb-postgresql
+            - name: POSTGRES_USER
+              value: root
+            - name: POSTGRES_PORT
+              value: "5432"
+            - name: ADMINKEY
+              value: unlock
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: stockdb-postgresql
+        image: docker.io/bitnami/postgresql:14.5.0-debian-11-r14
+        name: new-stock-job
+      restartPolicy: Never
