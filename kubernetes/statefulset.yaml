@@ -58,6 +58,29 @@ spec:
       hostNetwork: false
       hostIPC: false
       initContainers:
+        - name: init-chmod-data
+          image: docker.io/bitnami/bitnami-shell:11-debian-11-r35
+          imagePullPolicy: "IfNotPresent"
+          resources:
+            limits: {}
+            requests: {}
+          command:
+            - /bin/sh
+            - -ec
+            - |
+              chown 1001:1001 /bitnami/postgresql
+              mkdir -p /bitnami/postgresql/data
+              chmod 700 /bitnami/postgresql/data
+              find /bitnami/postgresql -mindepth 1 -maxdepth 1 -not -name "conf" -not -name ".snapshot" -not -name "lost+found" | \
+                xargs -r chown -R 1001:1001
+              chmod -R 777 /dev/shm
+          securityContext:
+            runAsUser: 0
+          volumeMounts:
+            - name: data
+              mountPath: /bitnami/postgresql
+            - name: dshm
+              mountPath: /dev/shm
       containers:
         - name: postgresql
           image: docker.io/bitnami/postgresql:14.5.0-debian-11-r14
