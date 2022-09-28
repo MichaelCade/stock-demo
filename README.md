@@ -217,6 +217,6 @@ If you are looking to deploy this Application outside of ArgoCD this is also pos
 - Open browser at http://localhost:31602/ (If this is the first time you will see RED)
 - You must init so that we build our database http://localhost:31602/init
 - Use Kasten K10 to take your backup and export to S3
-- Cause a problem to the App! Why not even zero the product stock all out!
+- Cause a problem to the App! Why not even zero the product stock all out! You could also use the job described above to add in some new products. 
 - Restore from backup or export using Kasten K10
 
