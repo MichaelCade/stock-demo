@@ -85,6 +85,8 @@ There is an option also to use the ArgoCD CLI to create (TBD)
 
 This is a very simple web front end stock app that our whole company use. Our company has been busy and we have some additional items to add to our stock system the below job will implement this change, but can you see the flaw. 
 
+There are two options for implementing this change, if you are using the above repository then you can use the branch v2 within the argocd UI to issue the below change. If you have forked the repo and you would like to implement the below problem or issue into the app using git commands then please follow that instruction. 
+
 TLDR; Using a psql command to add new products but in doing so it also clears all counters by mistake
 
 ```
@@ -159,9 +161,11 @@ Shows the content of our database
 ## Recovery 
 Our mission-critical database is now in theory showing us wrong data, we managed to get the new item in with the correct stock levels but we accidently changed the values of stock within our database. The issue here is only found when you know that this data has been wrongly implemented or someone checks the stock levels, which could be weeks/months in the future. 
 
-We can use Kasten K10 to get our data back from when this issue took place. 
+We can use Kasten K10 to get our data back from when this issue took place. This process will be the same regardless if you are using the code changes or branches.
 
 ## Resolving the code
+
+If you are using the branch method then in ArgoCD you can change the branch to v3 to simulate this stage you do not need to delete or remove anything. 
 
 After the recovery we will need to remove our `new-stock-job.yaml` so that we do not alter wrongly the stock value of some products. 
 
@@ -212,8 +216,6 @@ spec:
       restartPolicy: Never
 EOF
 ```
-
-
 
 ## Standard Stock-App Deployment steps 
 If you are looking to deploy this Application outside of ArgoCD this is also possible, also a great demo for Kasten K10 + protecting PostgreSQL data, simulate this with buying some fake produce to maniuplate the stock numbers. 
