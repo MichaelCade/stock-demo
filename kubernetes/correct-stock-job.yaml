@@ -1,3 +1,4 @@
+cat << EOF > correct-stock-job.yaml
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -39,3 +40,4 @@ spec:
         image: docker.io/bitnami/postgresql:14.5.0-debian-11-r14
         name: correct-stock-job
       restartPolicy: Never
+EOF
