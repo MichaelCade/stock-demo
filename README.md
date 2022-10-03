@@ -81,6 +81,10 @@ There is an option also to use the ArgoCD CLI to create (TBD)
 
 `COMMAND FOR ARGOCD`
 
+out of the box the service is not set to LoadBalancer if this is not changed then you can use the following command to access. 
+
+`kubectl port-forward svc/stock-demo-svc -n stock-demo 8181:80`
+
 ## Implement change that affects our stock database (PostgreSQL) 
 
 This is a very simple web front end stock app that our whole company use. Our company has been busy and we have some additional items to add to our stock system the below job will implement this change, but can you see the flaw. 
