@@ -6,7 +6,7 @@
 
 Original app created and forked from - https://github.com/tdewin/stock-demo 
 
-You can find a talk where this repository and process is used by me - (Integrating backup into your Gitops CI/CD Pipelines)[https://youtu.be/DcOYB4cUM9U?t=9787](KubeHuddle 2022)
+You can find a talk where this repository and process is used by me - [Integrating backup into your Gitops CI/CD Pipelines](https://youtu.be/DcOYB4cUM9U?t=9787)[KubeHuddle 2022](https://kubehuddle.com/2022/)
 
 In this demo we will highlight how developers that are working with applications that have state should consider integrating backup operations into their GitOps workflow. This demo will simulate the deployment of our stock app via ArgoCD and enable us to simulate really how easy it is to manipulate your data outside of your source code and version control. 
 
