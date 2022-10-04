@@ -16,7 +16,9 @@ This demo will look at the following steps:
 - Deploy ArgoCD  
 - Deploy Kasten K10 (Helm Chart Deployment)
 - Deploy stock-demo app via ArgoCD 
-- Implement change that affects our stock database (PostgreSQL) 
+- Implement change that affects our stock database (PostgreSQL) using Kubernetes Job - Mistakes were made! 
+- Recover database from Kasten K10 backup
+- Implement correct database Kubernetes job 
 
 ## PreReqs 
 
